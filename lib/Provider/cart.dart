@@ -10,10 +10,5 @@ class Cart with ChangeNotifier{
     notifyListeners();
 
   }
-  delete(Item product) {
-    SelectedProducts.remove(product);
-    price-=product.price.round();
-    notifyListeners();
 
-  }
 }
