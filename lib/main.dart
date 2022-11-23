@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/Provider/cart.dart';
-import 'package:untitled1/pages/Check_out.dart';
-import 'package:untitled1/pages/Deatiles_Screan.dart';
 import 'package:untitled1/pages/Home.dart';
 import 'package:provider/provider.dart';
 
@@ -16,11 +14,11 @@ void main() {
 
    @override
    Widget build(BuildContext context) {
-     return  ChangeNotifierProvider(
+     return ChangeNotifierProvider(
        create: (BuildContext context) {return Cart();},
        child: MaterialApp(
          debugShowCheckedModeBanner: false,
-          home:SamarHomePage(),
+         home:SamarHomePage(),
 
        ),
      );
