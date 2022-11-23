@@ -36,7 +36,9 @@ class ProductsandPrice extends StatelessWidget {
                   ),
                 ],
               ),
+
               Padding(
+
                 padding: const EdgeInsets.only(right: 12),
                 child: Text('\$ ${cartInstance.price}',
                   style: const TextStyle(fontSize: 18),
