@@ -28,12 +28,12 @@ class ProductsandPrice extends StatelessWidget {
                   ),
 
 
-
                   IconButton(onPressed: (){
                     Navigator.push(context,MaterialPageRoute(builder: (context)=> const CheckOut(),),);
                   },
                     icon: const Icon(Icons.add_shopping_cart),
                   ),
+
                 ],
               ),
 
