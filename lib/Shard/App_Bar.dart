@@ -22,6 +22,7 @@ class ProductsandPrice extends StatelessWidget {
                             shape: BoxShape.circle),
                         child:Text('${cartInstance.SelectedProducts.length}',
                           style: const TextStyle(fontSize: 16,color: Color.fromARGB(255, 0, 0, 0),
+
                           ),
                         )),
                   ),
