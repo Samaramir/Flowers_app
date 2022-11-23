@@ -43,7 +43,30 @@ bool isShowmore=true;
                     child: const Text('New',style: TextStyle(fontSize: 15),),
                   ),
                   const SizedBox(width: 8,),
-
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.star,
+                        size: 26,
+                        color: Colors.amberAccent,),
+                      Icon(
+                        Icons.star,
+                        size: 26,
+                        color: Colors.amberAccent,),
+                      Icon(
+                        Icons.star,
+                        size: 26,
+                        color: Colors.amberAccent,),
+                      Icon(
+                        Icons.star,
+                        size: 26,
+                        color: Colors.amberAccent,),
+                      Icon(
+                        Icons.star,
+                        size: 26,
+                        color: Colors.amberAccent,),
+                    ],
+                  ),
                   const SizedBox(width: 66,),
                   Row(
                     children:[
