@@ -14,26 +14,21 @@ class CheckOut extends StatelessWidget {
         backgroundColor:Colors.green,
         actions: const [
           ProductsandPrice()
-        ],
-      ),
+        ],),
       body:Column(
-        children: [
-          SingleChildScrollView(
+        children: [SingleChildScrollView(
           child:SizedBox(height: 300,
-            child: ListView.builder(
-              padding: const EdgeInsets.all(8),
+            child: ListView.builder(padding: const EdgeInsets.all(8),
                 itemCount:cartInstance.SelectedProducts.length ,
                 itemBuilder: (BuildContext context,int index){
                 return Card(
-                  child: ListTile(
-                    title: Text(cartInstance.SelectedProducts[index].name),
-                    subtitle: Text('${cartInstance.SelectedProducts[index].price}-$cartInstance.SelectedProducts[index].location'),
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage(cartInstance.SelectedProducts[index].imgpath),),
+                  child: ListTile(title: Text(cartInstance.SelectedProducts[index].name),
+                    subtitle: Text('${cartInstance.SelectedProducts[index].price}'
+                        '-$cartInstance.SelectedProducts[index].location'),
+                    leading: CircleAvatar(backgroundImage: AssetImage(cartInstance.SelectedProducts[index].imgpath),),
                     trailing: IconButton(onPressed: (){
                       cartInstance.delete(cartInstance.SelectedProducts[index]);
-
-                    },icon:const Icon(Icons.remove)),
+                      },icon:const Icon(Icons.remove)),
                   ),
                 );
 
