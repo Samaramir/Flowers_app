@@ -7,10 +7,8 @@ class ProductsandPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<Cart>(
-        builder:((context,cartInstance,child){
-          return Row(
-            children:[
+    return  Consumer<Cart>(builder:((context,cartInstance,child){
+          return Row(children:[
               Stack(
                 children: [
                   Positioned(
@@ -22,30 +20,14 @@ class ProductsandPrice extends StatelessWidget {
                             shape: BoxShape.circle),
                         child:Text('${cartInstance.SelectedProducts.length}',
                           style: const TextStyle(fontSize: 16,color: Color.fromARGB(255, 0, 0, 0),
-
-                          ),
-                        )),
-                  ),
-
-
+                          ),)),),
                   IconButton(onPressed: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=> const CheckOut(),),);
-                  },
-                    icon: const Icon(Icons.add_shopping_cart),
-                  ),
-
-                ],
-              ),
-
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=> const CheckOut(),),);},
+                    icon: const Icon(Icons.add_shopping_cart),),],),
               Padding(
-
                 padding: const EdgeInsets.only(right: 12),
                 child: Text('\$ ${cartInstance.price}',
                   style: const TextStyle(fontSize: 18),
-                ),
-              ),
-            ],
-          );
-        }));
+                ),),],);}));
   }
 }
