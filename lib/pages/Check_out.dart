@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/Provider/cart.dart';
 import 'package:untitled1/Shard/App_Bar.dart';
+import 'package:untitled1/pages/login.dart';
 class CheckOut extends StatelessWidget {
   const CheckOut({Key? key}) : super(key: key);
 
@@ -10,7 +11,7 @@ class CheckOut extends StatelessWidget {
     final cartInstance =Provider.of<Cart>(context);
     return Scaffold(
       appBar:AppBar(
-        title: const Text('Check Out'),
+        title: const Text('Shopping Cart'),
         backgroundColor:Colors.green,
         actions: const [
           ProductsandPrice()
@@ -28,7 +29,7 @@ class CheckOut extends StatelessWidget {
                     leading: CircleAvatar(backgroundImage: AssetImage(cartInstance.SelectedProducts[index].imgpath),),
                     trailing: IconButton(onPressed: (){
                       cartInstance.delete(cartInstance.SelectedProducts[index]);
-                      },icon:const Icon(Icons.remove)),
+                      }, icon:const Icon(Icons.remove)),
                   ),
                 );
 
@@ -37,11 +38,13 @@ class CheckOut extends StatelessWidget {
     ),
        ElevatedButton(onPressed:(){},
          style: ButtonStyle(
-           backgroundColor: MaterialStateProperty.all(Colors.redAccent),
+           backgroundColor: MaterialStateProperty.all(Colors.blueGrey),
            padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
          ),
-           child:Text('pay\$${cartInstance.price}',style: const TextStyle(fontSize: 19),),
+           child:TextButton(onPressed: (){Navigator.push(context,MaterialPageRoute(builder: (context)=> const Login(),),); }, child:Text( 'pay\$${cartInstance.price} ' ,),),
+           //Text('pay\$${cartInstance.price}',style: const TextStyle(fontSize: 19),),
+          // Navigator.push(context,MaterialPageRoute(builder: (context)=> const Login(),),);
        )
         ],
       ));
