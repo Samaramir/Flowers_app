@@ -16,7 +16,7 @@ void main() {
    Widget build(BuildContext context) {
      return ChangeNotifierProvider(
        create: (BuildContext context) {return Cart();},
-       child: MaterialApp(
+       child: const MaterialApp(
          debugShowCheckedModeBanner: false,
          home:SamarHomePage(),
 
