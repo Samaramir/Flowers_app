@@ -28,9 +28,55 @@ bool isShowmore=true;
         child:Column(
             children:[
               Image.asset(widget.prducte.imgpath),
-              const SizedBox(height: 11,),
-              Text('\$  ${widget.prducte.price}',style: const TextStyle(fontSize: 20),),
+              const SizedBox(height:10,),
+               Text('\$ ${widget.prducte.price}',style: const TextStyle(fontSize: 20),),
               const SizedBox(height: 16,),
+              const SizedBox(
+                width: double.infinity,
+                child: Text('Datiles:',style: TextStyle(fontSize: 10), textAlign: TextAlign.start,
+                ),),
+              const SizedBox(height: 16,),
+              Text(widget.prducte.descrap
+                ,style:const TextStyle(fontSize: 18), maxLines: isShowmore?   2:null,
+                overflow: TextOverflow.fade,) ,
+              TextButton(onPressed: (){setState(() {isShowmore=!isShowmore;});
+              }, child:Text(isShowmore? 'Show more':'Show less')),
+              const SizedBox(height: 16,),
+               Column(children: [
+                 ListTile(
+                   title: Text(' 24 hours on demand video'),
+                   leading:Icon(Icons.access_time,size:26),
+                    onTap: (){},
+                 ),
+                 ListTile(
+                   title: Text(' 13 articles'),
+                   leading:Icon(Icons.article,size:26),
+                   onTap: (){},
+                 ),
+                 ListTile(
+                   title: Text('18 coding exercises'),
+                   leading:Icon(Icons.code,size:26),
+                   onTap: (){},
+                 ),
+                 ListTile(
+                   title: Text('Full lifetime access'),
+                   leading:Icon(Icons.timelapse_outlined,size:26),
+                   onTap: (){},
+                 ),
+                 ListTile(
+                   title: Text('Access on mobile and TV'),
+                   leading:Icon(Icons.mobile_friendly,size:26),
+                   onTap: (){},
+                 ),
+                 ListTile(
+                   title: Text('Certificate of completion'),
+                   leading:Icon(Icons.brightness_medium_outlined,size:26),
+                   onTap: (){},
+                 ),
+
+
+               ], ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -69,45 +115,13 @@ bool isShowmore=true;
                   ),
                   const SizedBox(width: 66,),
                   Row(
-                    children:[
-                      const Icon(Icons.edit_location,
-                        size: 20,
+                    children:[const Icon(Icons.edit_location, size: 20,
                         color: Colors.blueAccent,),
-                      const SizedBox(
-                        width: 2,
-                      ),
-                      Text(widget.prducte.location,
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-    ],
-    ),
-              const SizedBox(height: 5,),
-              const SizedBox(
-                width: double.infinity,
-                child: Text('Datiles:',style: TextStyle(fontSize: 10),
-                  textAlign: TextAlign.start,
-                ),
+                      const SizedBox(width: 2,),
+                      Text(widget.prducte.location, style: const TextStyle(fontSize: 16),
+                      ),],),],
               ),
-              const SizedBox(height: 16,),
 
-              Text('The Internet of things will involve a massive build-out of connected devices and sensors woven into the fabric of our lives and businesses.'
-                ,style:const TextStyle(fontSize: 18),
-                maxLines: isShowmore?   2:null,
-                overflow: TextOverflow.fade,
-              ) ,
-              TextButton(onPressed: (){
-                setState(() {
-                  isShowmore=!isShowmore;
-                });
-              }, child:Text(isShowmore? 'Show more':'Show less'))
-
-
-
-            ],
-        )
-
-    ));
+            ],)));
   }
 }
