@@ -1,5 +1,7 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/Shard/contants.dart';
 import 'package:untitled1/pages/login.dart';
 
 
@@ -11,7 +13,43 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  bool isLoading = false;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
+  register() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      final credential =
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,17 +88,13 @@ class _RegisterState extends State<Register> {
                     const SizedBox(
                       height: 30,
                     ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.mail,
-                            color: Colors.black,
-                          ),
-                          hintText: "Enter your Email: ",
-                          border: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black))),
-                    ),
+                    TextField(
+                        controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        obscureText: false,
+                        decoration: decorationTextfield.copyWith(
+                          hintText: "Enter Your Email : ",
+                        )),
                     const SizedBox(
                       height: 30,
                     ),
@@ -85,17 +119,23 @@ class _RegisterState extends State<Register> {
                       height: 30,
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        register();
+                      },
+                      child: isLoading
+                          ? CircularProgressIndicator(
+                        color: Colors.white,
+                      )
+                          : Text(
+                        "Register",
+                        style: TextStyle(fontSize: 19),
+                      ),
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.purple[800]),
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.all(12)),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8)))),
-                      child: const Text('Register',
-                          style: TextStyle(fontSize: 19)),
+                        backgroundColor: MaterialStateProperty. all(Colors.purple[800]),
+                        padding: MaterialStateProperty.all(EdgeInsets.all(12)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                      ),
                     ),
                     const SizedBox(
                       height: 30,

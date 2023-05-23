@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/Provider/cart.dart';
-import 'package:untitled1/pages/Home.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/pages/Register.dart';
 
 
 
@@ -18,7 +18,7 @@ void main() async{
        create: (BuildContext context) {return Cart();},
        child: const MaterialApp(
          debugShowCheckedModeBanner: false,
-         home:SamarHomePage(),
+         home:Register(),
 
        ),
      );
