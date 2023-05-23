@@ -17,3 +17,10 @@ class Cart with ChangeNotifier{
 
   }
 }
+
+//decoration: const InputDecoration(
+//icon: Icon(Icons.person ,color: Colors.black,),
+//hintText:"Enter your Email" ,
+//border: InputBorder.none,
+
+//),

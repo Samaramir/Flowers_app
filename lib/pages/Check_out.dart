@@ -12,13 +12,13 @@ class CheckOut extends StatelessWidget {
     return Scaffold(
       appBar:AppBar(
         title: const Text('Shopping Cart'),
-        backgroundColor:Colors.green,
+        backgroundColor:Colors.purple[800],
         actions: const [
           ProductsandPrice()
         ],),
       body:Column(
         children: [SingleChildScrollView(
-          child:SizedBox(height: 300,
+          child:SizedBox(height: 600,
             child: ListView.builder(padding: const EdgeInsets.all(8),
                 itemCount:cartInstance.SelectedProducts.length ,
                 itemBuilder: (BuildContext context,int index){
@@ -38,7 +38,7 @@ class CheckOut extends StatelessWidget {
     ),
        ElevatedButton(onPressed:(){},
          style: ButtonStyle(
-           backgroundColor: MaterialStateProperty.all(Colors.blueGrey),
+           backgroundColor: MaterialStateProperty.all(Colors.purple),
            padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
          ),

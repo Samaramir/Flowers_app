@@ -18,10 +18,10 @@ class SamarHomePage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3/2,
+          crossAxisCount: 1,
+          childAspectRatio: 4/3,
           crossAxisSpacing: 8,
-          mainAxisSpacing: 20),
+          mainAxisSpacing: 33),
           itemCount:products.length,
          itemBuilder:(BuildContext  context,int index){
           return GestureDetector(
@@ -38,7 +38,7 @@ class SamarHomePage extends StatelessWidget {
               trailing: Consumer<Cart>(
                 builder: ((context,cart,child){
                   return IconButton(
-                    color: const Color.fromARGB(255, 62, 94, 70),
+                    color: const Color.fromARGB(200,74, 20, 140),
                     onPressed: (){
                       cart.add(products[index]);
 
@@ -46,7 +46,7 @@ class SamarHomePage extends StatelessWidget {
                     icon:const Icon(Icons.add),);
                 }),
               ),
-              leading: const Text('\$12.99'),
+              leading: Text('\$ ${products[index].price}'),
               title: const Text('',
               ),
             ),
@@ -95,7 +95,7 @@ class SamarHomePage extends StatelessWidget {
                       Navigator.push(context,MaterialPageRoute(builder: (context)=> const SamarHomePage (),),);
                     }),
                     ListTile(
-                    title:const Text('My Products'),
+                    title:const Text('My Courses'),
                     leading:const Icon(Icons.add_shopping_cart) ,
                     onTap: (){
                       Navigator.push(context,MaterialPageRoute(builder: (context)=> const CheckOut(),),);
@@ -103,7 +103,8 @@ class SamarHomePage extends StatelessWidget {
                     ListTile(
                     title:const Text('About'),
                     leading:const Icon(Icons.help_center) ,
-                    onTap: (){}),
+                    onTap: (){
+                    }),
                     ListTile(
                     title:const Text('Logout'),
                     leading:const Icon(Icons.exit_to_app) ,
@@ -119,7 +120,7 @@ class SamarHomePage extends StatelessWidget {
             ),
                  Container(
                    margin: const EdgeInsets.only(bottom: 12),
-                   child: const Text('Developed by Samar Amir 2022',style: TextStyle(fontSize: 16),),
+                   child: const Text('Developed by Samar @ Amir 2022',style: TextStyle(fontSize: 16),),
                  )
           ],
         ),
@@ -130,7 +131,7 @@ class SamarHomePage extends StatelessWidget {
 
 
           ],
-               backgroundColor:Colors.green,
+               backgroundColor:Colors.purple[800],
                title: const Text('Home'),
     ));
 

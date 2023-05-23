@@ -1,13 +1,20 @@
+
 import 'package:flutter/material.dart';
-import 'package:untitled1/Shard/Text_Filed.dart';
 import 'package:untitled1/pages/Register.dart';
-class Login extends StatelessWidget {
+
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.purple[50],
       body:Center (
         child:Padding(
           padding: const EdgeInsets.all(33.0),
@@ -16,36 +23,61 @@ class Login extends StatelessWidget {
             children:  [
               const SizedBox(height: 64,
               ) ,
-              const MyTextFiled(
-                textInputType: TextInputType.emailAddress,
-                ispassword:false,
-                hinttextenter:"Enter your Email: ",
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.purple[100],
+                  borderRadius: BorderRadius.circular(66),
+                ),
+                width: 266,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: const TextField(
+
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.person ,color: Colors.black,),
+                    hintText:"Enter your Email" ,
+                    border: InputBorder.none,
+
+                  ),
+                ),
               ),
+              const SizedBox(height: 23,),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.purple[100],
+                    borderRadius: BorderRadius.circular(66)
+                ),
+                width:266,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: const TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    suffix: Icon(Icons.visibility,
+                      color: Colors.black,
+                    ),
+                    icon: Icon(Icons.lock,
+                      color: Colors.black,),
+                    hintText: "Password",
+                    border: InputBorder.none,
 
-
-              const SizedBox(height: 30,) ,
-              const MyTextFiled(
-                textInputType: TextInputType.text,
-                ispassword:true,
-                hinttextenter:"Enter your Password: ",
-                 ),
-
-
-              const SizedBox(height: 30,) ,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 23,),
               ElevatedButton(onPressed: (){},
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green),
-                  padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
+                    backgroundColor: MaterialStateProperty.all(Colors.purple[800]),
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
                 ),
-                  child: const Text('Sign in',style:TextStyle(fontSize: 19)),
+
+                child: const Text('Sign In',style:TextStyle(fontSize: 19)),
 
               ),
               const SizedBox(height: 30,) ,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Do not have an account?',style: TextStyle(fontSize: 18),),
+                  const Text('Do have an account?',style: TextStyle(fontSize: 18),),
                   TextButton(onPressed: (){
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const Register()),);
 
@@ -54,16 +86,7 @@ class Login extends StatelessWidget {
                       child: const Text('Sign up',style: TextStyle(color: Colors.black,fontSize: 18),))
                 ],
               )
+            ],),),),);
 
-
-
-
-
-
-            ],
-    ),
-    ),
-      ),
-    );
   }
 }
