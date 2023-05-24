@@ -250,87 +250,12 @@ class _RegisterState extends State<Register> {
                         const Text("At least 1 number"),
                       ],
                     ),
+
+
                     const SizedBox(
                       height: 15,
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: hasUppercase? Colors.green:  Colors.white,
-                            border: Border.all(
-                                color: const Color.fromARGB(255, 189, 189, 189)),
-                          ),
-                          child: const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 11,
-                        ),
-                        const Text("Has Uppercase"),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: hasLowercase? Colors.green : Colors.white,
-                            border: Border.all(
-                                color: const Color.fromARGB(255, 189, 189, 189)),
-                          ),
-                          child: const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 11,
-                        ),
-                        const Text("Has  Lowercase "),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: hasSpecialCharacters? Colors.green :  Colors.white,
-                            border: Border.all(
-                                color: const Color.fromARGB(255, 189, 189, 189)),
-                          ),
-                          child: const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 11,
-                        ),
-                        const Text("Has  Special Characters "),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 33,
-                    ),
+
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
@@ -371,8 +296,9 @@ class _RegisterState extends State<Register> {
                               );
                             },
                             child: const Text('sign in',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18))),
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      decoration: TextDecoration.underline))),
                       ],
                     ),
 

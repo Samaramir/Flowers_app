@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/Shard/contants.dart';
 import 'package:untitled1/pages/Register.dart';
+import 'package:untitled1/pages/forget_password.dart';
 
 import '../Shard/snackbar.dart';
 
@@ -47,6 +48,7 @@ class _LoginState extends State<Login> {
     passwordController.dispose();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +124,17 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 30,
               ),
+              TextButton(
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ForgotPassword()),
+                  );
+                },
+                child: const Text("Forgot password?",
+                    style: TextStyle(
+                        fontSize: 18, decoration: TextDecoration.underline)),)
+              ,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
