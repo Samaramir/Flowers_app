@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/Provider/cart.dart';
 import 'package:untitled1/Shard/App_Bar.dart';
-import 'package:untitled1/pages/login.dart';
+import 'package:untitled1/pages/singin.dart';
 class CheckOut extends StatelessWidget {
   const CheckOut({Key? key}) : super(key: key);
 

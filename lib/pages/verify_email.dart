@@ -18,7 +18,6 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
 
@@ -41,16 +40,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     }
   }
 
-
-
-
-
-
-
-
   sendVerificationEmail() async {
     try {
-      await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+      // await FirebaseAuth.instance.currentUser!.sendEmailVerification();
       setState(() {
         canResendEmail = false;
       });
@@ -65,7 +57,6 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     timer?.cancel();
     super.dispose();
   }
@@ -78,7 +69,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       appBar: AppBar(
         title: const Text("Verify Email"),
         elevation: 0,
-        backgroundColor:const Color.fromARGB(255, 255, 255,0),
+        backgroundColor: Colors.purple[600],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -95,11 +86,12 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                canResendEmail? sendVerificationEmail() : null;
+                canResendEmail ? sendVerificationEmail() : null;
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.purple[600]),
-                padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
+                backgroundColor: MaterialStateProperty.all(Colors.purple),
+                padding:
+                MaterialStateProperty.all(const EdgeInsets.all(12)),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8))),
               ),
@@ -132,4 +124,8 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     );
   }
 }
+
+
+
+
 

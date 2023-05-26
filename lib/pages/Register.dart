@@ -1,9 +1,10 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/Shard/contants.dart';
 import 'package:untitled1/Shard/snackbar.dart';
-import 'package:untitled1/pages/login.dart';
+import 'package:untitled1/pages/singin.dart';
 
 
 class Register extends StatefulWidget {
@@ -15,10 +16,15 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   bool isVisable = true;
+
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final usernameController = TextEditingController();
+  final ageController = TextEditingController();
+  final titleController = TextEditingController();
 
   bool isPassword8Char = false;
   bool isPasswordHas1Number = false;
@@ -41,23 +47,19 @@ class _RegisterState extends State<Register> {
         isPasswordHas1Number = true;
       }
 
-      if (password.contains(  RegExp(r'[A-Z]')     )) {
+      if (password.contains(RegExp(r'[A-Z]'))) {
         hasUppercase = true;
       }
 
-      if (password.contains(  RegExp(r'[a-z]')     )) {
+      if (password.contains(RegExp(r'[a-z]'))) {
         hasLowercase = true;
       }
 
-      if (password.contains( RegExp(r'[!@#$%^&*(),.?":{}|<>]')     )) {
+      if (password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
         hasSpecialCharacters = true;
       }
-
-
-
     });
   }
-
 
   register() async {
     setState(() {
@@ -70,6 +72,23 @@ class _RegisterState extends State<Register> {
         email: emailController.text,
         password: passwordController.text,
       );
+
+      print(credential.user!.uid);
+
+      CollectionReference users =
+      FirebaseFirestore.instance.collection('userSSS');
+
+      users
+          .doc(credential.user!.uid)
+          .set({
+        'username': usernameController.text,
+        'age': ageController.text,
+        "title": titleController.text,
+        "email": emailController.text,
+        "pass": passwordController.text,
+      })
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         showSnackBar(context, "The password provided is too weak.");
@@ -92,9 +111,12 @@ class _RegisterState extends State<Register> {
     // TODO: implement dispose
     emailController.dispose();
     passwordController.dispose();
+
+    usernameController.dispose();
+    ageController.dispose();
+    titleController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,13 +140,24 @@ class _RegisterState extends State<Register> {
                       height: 30,
                     ),
                     TextField(
+                        controller: usernameController,
                         keyboardType: TextInputType.text,
                         obscureText: false,
                         decoration: decorationTextfield.copyWith(
                             hintText: "Enter Your username : ",
-                            suffixIcon: Icon(Icons.person))),
+                            suffixIcon: const Icon(Icons.person))),
                     const SizedBox(
                       height: 30,
+                    ),
+                    TextFormField(
+                        controller: ageController,
+                        keyboardType: TextInputType.number,
+                        obscureText: false,
+                        decoration: decorationTextfield.copyWith(
+                            hintText: "Enter Your age : ",
+                            suffixIcon: const Icon(Icons.pest_control_rodent))),
+                    const SizedBox(
+                      height: 22,
                     ),
                     TextFormField(
                       // we return "null" when something is valid
@@ -146,6 +179,10 @@ class _RegisterState extends State<Register> {
                     ),
 
                     TextFormField(
+                        onChanged: (password) {
+                          onPasswordChanged(password);
+                        },
+                        // we return "null" when something is valid
                         validator: (value) {
                           return value!.length < 8
                               ? "Enter at least 8 characters"
@@ -257,19 +294,18 @@ class _RegisterState extends State<Register> {
                     ),
 
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          register();
+                          await register();
+                          if (!mounted) return;
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Login()),
+                          );
                         } else {
                           showSnackBar(context, "ERROR");
                         }
                       },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty. all(Colors.purple[800]),
-                        padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8))),
-                      ),
                       child: isLoading
                           ? const CircularProgressIndicator(
                         color: Colors.white,
@@ -278,9 +314,15 @@ class _RegisterState extends State<Register> {
                         "Register",
                         style: TextStyle(fontSize: 19),
                       ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.purpleAccent),
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                      ),
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 33,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

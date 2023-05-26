@@ -5,9 +5,9 @@ import 'package:untitled1/Provider/cart.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/Provider/google_signin.dart';
 import 'package:untitled1/Shard/snackbar.dart';
-import 'package:untitled1/pages/Home.dart';
-import 'package:untitled1/pages/login.dart';
-import 'package:untitled1/pages/verify_email.dart';
+import 'package:untitled1/pages/profile_page.dart';
+import 'package:untitled1/pages/singin.dart';
+//import 'package:untitled1/pages/verify_email.dart';
 
 
 
@@ -45,9 +45,10 @@ void main() async{
                } else if (snapshot.hasError) {
                  return showSnackBar(context, "Something went wrong");
                } else if (snapshot.hasData) {
-                 return const VerifyEmailPage(); // home() OR verify email
+                 // return VerifyEmailPage();
+                 return const Login(); // home() OR verify email
                } else {
-                 return const Login();
+                 return  ProfilePage();
                }
              },
            )),

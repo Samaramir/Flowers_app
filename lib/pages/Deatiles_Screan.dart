@@ -68,32 +68,32 @@ class _DeatilesState extends State<Details> {
               children: [
                 ListTile(
                   title: Text(' ${widget.prducte.hours}'),
-                  leading: Icon(Icons.access_time, size: 26),
+                  leading: const Icon(Icons.access_time, size: 26),
                   onTap: () {},
                 ),
                 ListTile(
                   title: Text(' ${widget.prducte.article}'),
-                  leading: Icon(Icons.article, size: 26),
+                  leading: const Icon(Icons.article, size: 26),
                   onTap: () {},
                 ),
                 ListTile(
                   title: Text('${widget.prducte.Code}'),
-                  leading: Icon(Icons.code, size: 26),
+                  leading: const Icon(Icons.code, size: 26),
                   onTap: () {},
                 ),
                 ListTile(
                   title: Text('${widget.prducte.Time}'),
-                  leading: Icon(Icons.timelapse_outlined, size: 26),
+                  leading: const Icon(Icons.timelapse_outlined, size: 26),
                   onTap: () {},
                 ),
                 ListTile(
                   title: Text('${widget.prducte.mobile}'),
-                  leading: Icon(Icons.mobile_friendly, size: 26),
+                  leading: const Icon(Icons.mobile_friendly, size: 26),
                   onTap: () {},
                 ),
                 ListTile(
                   title: Text('${widget.prducte.certifica}'),
-                  leading: Icon(Icons.brightness_medium_outlined, size: 26),
+                  leading: const Icon(Icons.brightness_medium_outlined, size: 26),
                   onTap: () {},
                 ),
               ],

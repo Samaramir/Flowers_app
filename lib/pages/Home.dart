@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/Provider/cart.dart';
@@ -5,7 +6,7 @@ import 'package:untitled1/Shard/App_Bar.dart';
 import 'package:untitled1/model_Iteam/Iteams.dart';
 import 'package:untitled1/pages/Check_out.dart';
 import 'package:untitled1/pages/Deatiles_Screan.dart';
-import 'package:untitled1/pages/login.dart';
+import 'package:untitled1/pages/profile_page.dart';
 
 
 
@@ -105,17 +106,17 @@ class SamarHomePage extends StatelessWidget {
                     leading:const Icon(Icons.help_center) ,
                     onTap: (){
                     }),
-                    ListTile(
-                    title:const Text('Logout'),
-                    leading:const Icon(Icons.exit_to_app) ,
-                  onTap: (){
-                  }),
+
                 ListTile(
-                    title:const Text('Login'),
-                    leading:const Icon(Icons.exit_to_app) ,
-                    onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=> const Login(),),);
+                    title: const Text("Profile Page"),
+                    leading: const Icon(Icons.person),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>  ProfilePage(),),);
                     }),
+                ListTile(
+                    title:const Text('LogOut'),
+                    leading:const Icon(Icons.exit_to_app) ,
+                    onTap: () {FirebaseAuth.instance.signOut();}),
               ],
             ),
                  Container(

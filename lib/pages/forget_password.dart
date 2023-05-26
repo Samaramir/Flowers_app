@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/Shard/contants.dart';
 import 'package:untitled1/Shard/snackbar.dart';
-import 'package:untitled1/pages/login.dart';
+import 'package:untitled1/pages/singin.dart';
 
 class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+  ForgotPassword({Key? key}) : super(key: key);
 
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
@@ -20,7 +20,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     showDialog(
         context: context,
         builder: (context) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(
               color: Colors.white,
             ),
@@ -41,7 +41,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Login()),
+      MaterialPageRoute(builder: (context) => Login()),
     );
   }
 
@@ -57,9 +57,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Reset Password"),
+        title: Text("Reset Password"),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.purple[600],
       ),
       body: Center(
         child: Padding(
@@ -69,9 +69,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Enter your email to rest your password.",
+                Text("Enter your email to rest your password.",
                     style: TextStyle(fontSize: 18)),
-                const SizedBox(
+                SizedBox(
                   height: 33,
                 ),
                 TextFormField(
@@ -88,7 +88,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     obscureText: false,
                     decoration: decorationTextfield.copyWith(
                         hintText: "Enter Your Email : ",
-                        suffixIcon: const Icon(Icons.email))),
+                        suffixIcon: Icon(Icons.email))),
                 const SizedBox(
                   height: 33,
                 ),
@@ -101,16 +101,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     }
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.purple[600]),
-                    padding: MaterialStateProperty.all(const EdgeInsets.all(12)),
+                    backgroundColor: MaterialStateProperty.all(Colors.purple),
+                    padding: MaterialStateProperty.all(EdgeInsets.all(12)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8))),
                   ),
                   child: isLoading
-                      ? const CircularProgressIndicator(
+                      ? CircularProgressIndicator(
                     color: Colors.white,
                   )
-                      : const Text(
+                      : Text(
                     "Reset Password",
                     style: TextStyle(fontSize: 19),
                   ),
